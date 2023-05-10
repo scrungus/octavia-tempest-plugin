@@ -239,9 +239,9 @@ class ListenerScenarioTest(test_base.LoadBalancerBaseTest):
                 const.TIMEOUT_MEMBER_DATA: 1000,
                 const.TIMEOUT_TCP_INSPECT: 50,
             })
-        if self.mem_listener_client.is_version_supported(
-                self.api_version, '2.12'):
-            listener_kwargs.update({const.ALLOWED_CIDRS: self.allowed_cidrs})
+        # if self.mem_listener_client.is_version_supported(
+        #         self.api_version, '2.12'):
+        #     listener_kwargs.update({const.ALLOWED_CIDRS: self.allowed_cidrs})
 
         listener = self.mem_listener_client.create_listener(**listener_kwargs)
         self.addCleanup(
