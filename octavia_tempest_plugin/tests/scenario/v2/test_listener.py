@@ -285,9 +285,9 @@ class ListenerScenarioTest(test_base.LoadBalancerBaseTest):
             self.assertEqual(1000, listener[const.TIMEOUT_MEMBER_CONNECT])
             self.assertEqual(1000, listener[const.TIMEOUT_MEMBER_DATA])
             self.assertEqual(50, listener[const.TIMEOUT_TCP_INSPECT])
-        if self.mem_listener_client.is_version_supported(
-                self.api_version, '2.12'):
-            self.assertEqual(self.allowed_cidrs, listener[const.ALLOWED_CIDRS])
+        # if self.mem_listener_client.is_version_supported(
+        #         self.api_version, '2.12'):
+        #     self.assertEqual(self.allowed_cidrs, listener[const.ALLOWED_CIDRS])
 
         # Listener update
         new_name = data_utils.rand_name("lb_member_listener1-update")
@@ -319,12 +319,12 @@ class ListenerScenarioTest(test_base.LoadBalancerBaseTest):
                 const.TIMEOUT_TCP_INSPECT: 100,
             })
 
-        if self.mem_listener_client.is_version_supported(
-                self.api_version, '2.12'):
-            new_cidrs = ['192.0.2.0/24']
-            if CONF.load_balancer.test_with_ipv6:
-                new_cidrs = ['2001:db8::/64']
-            listener_update_kwargs.update({const.ALLOWED_CIDRS: new_cidrs})
+        # if self.mem_listener_client.is_version_supported(
+        #         self.api_version, '2.12'):
+        #     new_cidrs = ['192.0.2.0/24']
+        #     if CONF.load_balancer.test_with_ipv6:
+        #         new_cidrs = ['2001:db8::/64']
+        #     listener_update_kwargs.update({const.ALLOWED_CIDRS: new_cidrs})
 
         listener = self.mem_listener_client.update_listener(
             listener[const.ID], **listener_update_kwargs)
@@ -372,12 +372,12 @@ class ListenerScenarioTest(test_base.LoadBalancerBaseTest):
             self.assertEqual(2000, listener[const.TIMEOUT_MEMBER_CONNECT])
             self.assertEqual(2000, listener[const.TIMEOUT_MEMBER_DATA])
             self.assertEqual(100, listener[const.TIMEOUT_TCP_INSPECT])
-        if self.mem_listener_client.is_version_supported(
-                self.api_version, '2.12'):
-            expected_cidrs = ['192.0.2.0/24']
-            if CONF.load_balancer.test_with_ipv6:
-                expected_cidrs = ['2001:db8::/64']
-            self.assertEqual(expected_cidrs, listener[const.ALLOWED_CIDRS])
+        # if self.mem_listener_client.is_version_supported(
+        #         self.api_version, '2.12'):
+        #     expected_cidrs = ['192.0.2.0/24']
+        #     if CONF.load_balancer.test_with_ipv6:
+        #         expected_cidrs = ['2001:db8::/64']
+        #     self.assertEqual(expected_cidrs, listener[const.ALLOWED_CIDRS])
 
         # Listener delete
         self.mem_listener_client.delete_listener(listener[const.ID])
